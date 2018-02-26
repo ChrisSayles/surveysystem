@@ -16,9 +16,8 @@ app.use(bodyParser.json({type:'application/vnd.api+json'}))
 
 app.use(express.static('./public'));
 
-app.listen(8080, function () {
-    console.log('Example app listening on port 8080.');
-});
+app.listen(process.env.PORT || 8080);
+console.log("Listening on port", PORT);
 
 // ROUTES =================================
 app.get('/', function(req, res){
