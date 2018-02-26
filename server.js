@@ -4,7 +4,7 @@ var bodyParser = require('body-parser');
 var request = require('request');
 
 
-
+const http = require('http')
 var PORT = 3000;
 var app = express();
 
@@ -17,7 +17,12 @@ app.use(bodyParser.json({type:'application/vnd.api+json'}))
 app.use(express.static('./public'));
 
 
+const requestHandler = (request, response) => {
+    console.log(request.url)
+    response.end('Hello Node.js Server!')
+  }
 
+const server = http.createServer(requestHandler)
 
 app.listen(process.env.PORT || 3000);
 console.log("Listening on port", PORT);
